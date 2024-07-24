@@ -7,8 +7,7 @@ const addTourSchema = Joi.object({
 			id: Joi.string().required()
 		})
 	),
-	period1: Joi.string().required(),
-	period2: Joi.string().required(),
+	duration: Joi.number().required(),
 	listType: Joi.number().required()
 })
 
