@@ -17,14 +17,10 @@ const tours = new Schema(
 			ref: 'user',
 			required: true
 		},
-		period1: {
-			type: Schema.Types.String,
-			required: true
-		},
-		period2: {
-			type: Schema.Types.String,
-			required: true
-		},
+    duration: {
+      type: Number,
+      required: true
+    },
 		equipList: [{ type: Schema.Types.Array, ref: 'equip' }]
 	},
 	{ versionKey: false, timestamps: false }
