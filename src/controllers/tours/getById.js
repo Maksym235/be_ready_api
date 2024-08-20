@@ -23,7 +23,14 @@ const getById = async (req, res) => {
 		}, {})
 		res.json({
 			code: 200,
-			trip: filteredByCategory
+			trip: {
+				id: resp._id,
+				name: resp.name,
+				users: resp.users,
+				owner: resp.owner,
+				duration: resp.duration,
+				equipList: filteredByCategory
+			}
 		})
 	}
 	res.json({
