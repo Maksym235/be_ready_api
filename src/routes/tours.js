@@ -7,10 +7,13 @@ const {
 	addUserstoTour,
 	getAllTours,
 	deleteUser,
-	updateEquipItem
+	updateEquipItem,
+	getTripById
 } = require('../controllers/tours')
 
 router.get('/', authenticate, getAllTours)
+
+router.get('/:id', authenticate, getTripById)
 
 router.post('/add', authenticate, validationBody(Schema.addTourSchema), addTour)
 
