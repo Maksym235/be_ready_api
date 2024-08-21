@@ -2,6 +2,8 @@ const { UserModel } = require('../../models/users')
 
 const getUsersById = async (req, res) => {
 	const { ids } = req.body
+	console.log(ids)
+	console.log(ids.split(', '))
 	if (!ids || !ids.length) {
 		return res.json({
 			code: 200,
