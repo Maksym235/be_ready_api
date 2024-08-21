@@ -10,7 +10,8 @@ const {
 	resetPassword,
 	changePassword,
 	newPassword,
-	getRequests
+	getRequests,
+	editRequests
 } = require('../controllers/users')
 const { authenticate, validationBody, isValidId } = require('../middlewares')
 const { Schema } = require('../models/users')
@@ -19,6 +20,8 @@ router.post('/register', validationBody(Schema.register), register)
 router.get('/login', login)
 
 router.get('/getRequests', authenticate, getRequests)
+
+router.get('/editRequest/:id', authenticate, editRequests)
 
 router.patch('/updateTheme', authenticate, updateTheme)
 
