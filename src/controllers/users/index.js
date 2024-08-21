@@ -10,6 +10,7 @@ const ResetPassword = require('./ResetPassword')
 const newPassword = require('./newPassword')
 const getUserRequests = require('./getUserRequests')
 const editUserRequests = require('./editRequest')
+const getUsersById = require('./getById')
 module.exports = {
 	register: controlWrapper(register),
 	login: controlWrapper(login),
@@ -21,5 +22,6 @@ module.exports = {
 	changePassword: controlWrapper(ChangePassword),
 	newPassword: controlWrapper(newPassword),
 	getRequests: controlWrapper(getUserRequests),
-	editRequests: controlWrapper(editUserRequests)
+	editRequests: controlWrapper(editUserRequests),
+	getUsersById: controlWrapper(getUsersById)
 }
