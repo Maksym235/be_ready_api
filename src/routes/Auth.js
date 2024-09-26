@@ -21,7 +21,7 @@ router.post('/register', validationBody(Schema.register), register)
 
 router.get('/login', login)
 
-router.get('/googleAuth', googleAuth)
+router.post('/googleAuth', googleAuth)
 
 router.get('/getRequests', authenticate, getRequests)
 
