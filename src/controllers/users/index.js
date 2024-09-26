@@ -11,6 +11,7 @@ const newPassword = require('./newPassword')
 const getUserRequests = require('./getUserRequests')
 const editUserRequests = require('./editRequest')
 const getUsersById = require('./getById')
+const googleAuth = require('./googleLogin')
 module.exports = {
 	register: controlWrapper(register),
 	login: controlWrapper(login),
@@ -23,5 +24,6 @@ module.exports = {
 	newPassword: controlWrapper(newPassword),
 	getRequests: controlWrapper(getUserRequests),
 	editRequests: controlWrapper(editUserRequests),
-	getUsersById: controlWrapper(getUsersById)
+	getUsersById: controlWrapper(getUsersById),
+	googleLogin: controlWrapper(googleAuth)
 }

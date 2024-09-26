@@ -16,9 +16,12 @@ const {
 } = require('../controllers/users')
 const { authenticate, validationBody, isValidId } = require('../middlewares')
 const { Schema } = require('../models/users')
+const googleAuth = require('../controllers/users/googleLogin')
 router.post('/register', validationBody(Schema.register), register)
 
 router.get('/login', login)
+
+router.get('/googleAuth', googleAuth)
 
 router.get('/getRequests', authenticate, getRequests)
 
