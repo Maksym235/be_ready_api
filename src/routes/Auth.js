@@ -12,7 +12,8 @@ const {
 	newPassword,
 	getRequests,
 	editRequests,
-	getUsersById
+	getUsersById,
+	updateData
 } = require('../controllers/users')
 const { authenticate, validationBody, isValidId } = require('../middlewares')
 const { Schema } = require('../models/users')
@@ -22,6 +23,8 @@ router.post('/register', validationBody(Schema.register), register)
 router.get('/login', login)
 
 router.post('/googleAuth', googleAuth)
+
+router.post('/update', authenticate, updateData)
 
 router.get('/getRequests', authenticate, getRequests)
 

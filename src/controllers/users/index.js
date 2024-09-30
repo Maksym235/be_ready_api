@@ -12,6 +12,7 @@ const getUserRequests = require('./getUserRequests')
 const editUserRequests = require('./editRequest')
 const getUsersById = require('./getById')
 const googleAuth = require('./googleLogin')
+const updateData = require('./updateData')
 module.exports = {
 	register: controlWrapper(register),
 	login: controlWrapper(login),
@@ -25,5 +26,6 @@ module.exports = {
 	getRequests: controlWrapper(getUserRequests),
 	editRequests: controlWrapper(editUserRequests),
 	getUsersById: controlWrapper(getUsersById),
-	googleLogin: controlWrapper(googleAuth)
+	googleLogin: controlWrapper(googleAuth),
+	updateData: controlWrapper(updateData)
 }
