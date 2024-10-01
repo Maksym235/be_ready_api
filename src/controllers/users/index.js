@@ -14,6 +14,7 @@ const getUsersById = require('./getById')
 const googleAuth = require('./googleLogin')
 const updateData = require('./updateData')
 const sendFriendRequest = require('./sendFriendRequest')
+const editFriendRequest = require('./editFriendRequest')
 module.exports = {
 	register: controlWrapper(register),
 	login: controlWrapper(login),
@@ -29,5 +30,6 @@ module.exports = {
 	getUsersById: controlWrapper(getUsersById),
 	googleLogin: controlWrapper(googleAuth),
 	updateData: controlWrapper(updateData),
-	sendFriendRequest: controlWrapper(sendFriendRequest)
+	sendFriendRequest: controlWrapper(sendFriendRequest),
+	editFriendRequest: controlWrapper(editFriendRequest)
 }

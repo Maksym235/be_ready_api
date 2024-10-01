@@ -36,6 +36,15 @@ const users = new Schema(
 		tripsRequest: {
 			type: Array,
 			default: []
+		},
+		friends: {
+			type: [
+				{
+					id: String,
+					name: String
+				}
+			],
+			default: []
 		}
 	},
 	{ versionKey: false, timestamps: true }
