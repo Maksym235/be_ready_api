@@ -7,6 +7,10 @@ const sendFriendRequest = async (req, res) => {
 	if (!user) {
 		throw HttpError(404, 'User not found')
 	}
+	const index = user.friendsRequest.findIndex((el) => el.id === currentUser)
+	if (index !== -1) {
+		throw HttpError(400, 'Request already sent')
+	}
 	await UserModel.findByIdAndUpdate(
 		{ _id: userid },
 		{
