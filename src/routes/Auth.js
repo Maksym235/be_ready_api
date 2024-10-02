@@ -15,7 +15,8 @@ const {
 	getUsersById,
 	updateData,
 	sendFriendRequest,
-	editFriendRequest
+	editFriendRequest,
+	deleteFriend
 } = require('../controllers/users')
 const { authenticate, validationBody, isValidId } = require('../middlewares')
 const { Schema } = require('../models/users')
@@ -35,6 +36,8 @@ router.get('/editRequest/:id', authenticate, editRequests)
 router.get('/editFrRequest/:id', authenticate, editFriendRequest)
 
 router.post('/frreq', authenticate, sendFriendRequest)
+
+router.get('/deleteFriend/:id', authenticate, deleteFriend)
 
 router.post('/getById', authenticate, getUsersById)
 
