@@ -7,9 +7,17 @@ const sendFriendRequest = async (req, res) => {
 	if (!user) {
 		throw HttpError(404, 'User not found')
 	}
-	const index = user.friendsRequest.findIndex((el) => el.id === currentUser)
+	const index = user.friendsRequest.findIndex(
+		(el) => String(el.id) === String(currentUser)
+	)
+	const indexInFriends = user.friends.findIndex(
+		(el) => String(el._id) === String(currentUser)
+	)
 	if (index !== -1) {
 		throw HttpError(400, 'Request already sent')
+	}
+	if (indexInFriends !== -1) {
+		throw HttpError(400, 'User is already in friends list')
 	}
 	await UserModel.findByIdAndUpdate(
 		{ _id: userid },
