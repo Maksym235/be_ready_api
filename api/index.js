@@ -18,6 +18,7 @@ const sorsOpt = {
 }
 app.use(express.json())
 app.use(cors(sorsOpt))
+app.use('/static', express.static('public'))
 app.use('/start', startRouter)
 app.use('/auth', authRouter)
 app.use('/tours', toursRouter)

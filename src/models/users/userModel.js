@@ -45,6 +45,9 @@ const users = new Schema(
 				}
 			],
 			default: []
+		},
+		avatarURL: {
+			type: String
 		}
 	},
 	{ versionKey: false, timestamps: true }

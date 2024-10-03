@@ -1,6 +1,15 @@
 const current = async (req, res) => {
-	const { token, name, id, email, theme, language, password, friends } =
-		req.user
+	const {
+		token,
+		name,
+		id,
+		email,
+		theme,
+		language,
+		password,
+		friends,
+		avatarURL
+	} = req.user
 	res.setHeader('Access-Control-Allow-Credentials', true)
 	res.setHeader('Access-Control-Allow-Origin', '*')
 	// another common pattern
@@ -25,7 +34,8 @@ const current = async (req, res) => {
 		password,
 		theme,
 		language,
-		friends
+		friends,
+		avatarURL
 	}
 	res.json({
 		user,

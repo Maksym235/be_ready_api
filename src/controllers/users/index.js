@@ -16,6 +16,7 @@ const updateData = require('./updateData')
 const sendFriendRequest = require('./sendFriendRequest')
 const editFriendRequest = require('./editFriendRequest')
 const deleteFriend = require('./deleteFriend')
+const changeAvatar = require('./changeAvatar')
 module.exports = {
 	register: controlWrapper(register),
 	login: controlWrapper(login),
@@ -33,5 +34,6 @@ module.exports = {
 	updateData: controlWrapper(updateData),
 	sendFriendRequest: controlWrapper(sendFriendRequest),
 	editFriendRequest: controlWrapper(editFriendRequest),
-	deleteFriend: controlWrapper(deleteFriend)
+	deleteFriend: controlWrapper(deleteFriend),
+	changeAvatar: controlWrapper(changeAvatar)
 }

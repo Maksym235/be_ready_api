@@ -16,9 +16,10 @@ const {
 	updateData,
 	sendFriendRequest,
 	editFriendRequest,
-	deleteFriend
+	deleteFriend,
+	changeAvatar
 } = require('../controllers/users')
-const { authenticate, validationBody, isValidId } = require('../middlewares')
+const { authenticate, validationBody, uploads } = require('../middlewares')
 const { Schema } = require('../models/users')
 const googleAuth = require('../controllers/users/googleLogin')
 router.post('/register', validationBody(Schema.register), register)
@@ -54,5 +55,7 @@ router.put('/changePassword', changePassword)
 router.post('/resetPassword', resetPassword)
 
 router.post('/newpass', newPassword)
+
+router.patch('/avatars', authenticate, uploads.single('avatar'), changeAvatar)
 
 module.exports = router
