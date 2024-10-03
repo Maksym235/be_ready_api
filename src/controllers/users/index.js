@@ -17,6 +17,7 @@ const sendFriendRequest = require('./sendFriendRequest')
 const editFriendRequest = require('./editFriendRequest')
 const deleteFriend = require('./deleteFriend')
 const changeAvatar = require('./changeAvatar')
+const resetToDefaultAvatar = require('./resetToDefaultAvatar')
 module.exports = {
 	register: controlWrapper(register),
 	login: controlWrapper(login),
@@ -35,5 +36,6 @@ module.exports = {
 	sendFriendRequest: controlWrapper(sendFriendRequest),
 	editFriendRequest: controlWrapper(editFriendRequest),
 	deleteFriend: controlWrapper(deleteFriend),
-	changeAvatar: controlWrapper(changeAvatar)
+	changeAvatar: controlWrapper(changeAvatar),
+	resetToDefaultAvatar: controlWrapper(resetToDefaultAvatar)
 }

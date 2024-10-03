@@ -17,7 +17,8 @@ const {
 	sendFriendRequest,
 	editFriendRequest,
 	deleteFriend,
-	changeAvatar
+	changeAvatar,
+	resetToDefaultAvatar
 } = require('../controllers/users')
 const { authenticate, validationBody, uploads } = require('../middlewares')
 const { Schema } = require('../models/users')
@@ -57,5 +58,7 @@ router.post('/resetPassword', resetPassword)
 router.post('/newpass', newPassword)
 
 router.patch('/avatars', authenticate, uploads.single('avatar'), changeAvatar)
+
+router.get('/resetAvatars', authenticate, resetToDefaultAvatar)
 
 module.exports = router

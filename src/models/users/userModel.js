@@ -48,6 +48,9 @@ const users = new Schema(
 		},
 		avatarURL: {
 			type: String
+		},
+		avatarName: {
+			type: String
 		}
 	},
 	{ versionKey: false, timestamps: true }

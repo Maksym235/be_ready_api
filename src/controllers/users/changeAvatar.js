@@ -1,7 +1,7 @@
 const { UserModel } = require('../../models/users')
-const path = require('path')
+
 const fs = require('fs/promises')
-const avatarsPath = path.join('public', 'avatars')
+
 const { cloudinary } = require('../../helpers')
 const changeAvatar = async (req, res) => {
 	const { _id: id } = req.user
@@ -20,6 +20,7 @@ const changeAvatar = async (req, res) => {
 		}
 	})
 	const avatarURL = resultUpload.secure_url
+	const avatarName = resultUpload.original_filename
 	// const newAvatar = path.join(
 	// 	'https://be-ready-api.vercel.app/',
 	// 	'static',
@@ -32,7 +33,8 @@ const changeAvatar = async (req, res) => {
 	await UserModel.findByIdAndUpdate(
 		{ _id: id },
 		{
-			avatarURL
+			avatarURL,
+			avatarName
 		}
 	)
 

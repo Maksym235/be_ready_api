@@ -8,7 +8,8 @@ const current = async (req, res) => {
 		language,
 		password,
 		friends,
-		avatarURL
+		avatarURL,
+		avatarName
 	} = req.user
 	res.setHeader('Access-Control-Allow-Credentials', true)
 	res.setHeader('Access-Control-Allow-Origin', '*')
@@ -35,7 +36,8 @@ const current = async (req, res) => {
 		theme,
 		language,
 		friends,
-		avatarURL
+		avatarURL,
+		avatarName
 	}
 	res.json({
 		user,
