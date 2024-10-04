@@ -16,7 +16,6 @@ const addNewItem = async (req, res) => {
 		description,
 		persons: []
 	}
-	console.log(newItem)
 	if ((trip.equipList.length = 0)) {
 		await ToursModel.findByIdAndUpdate(
 			{ _id: id },

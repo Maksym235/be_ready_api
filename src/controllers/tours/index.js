@@ -5,6 +5,7 @@ const addUserstoTour = require('./addUser')
 const deleteUser = require('./deleteUser')
 const updateEquip = require('./updateEquipItem')
 const getById = require('./getById')
+const new_addTour = require('./new_add')
 // const addNewUser = require('./addNewItem')
 const addNewItem = require('./addNewItem')
 module.exports = {
@@ -14,5 +15,6 @@ module.exports = {
 	deleteUser: controlWrapper(deleteUser),
 	updateEquipItem: controlWrapper(updateEquip),
 	getTripById: controlWrapper(getById),
-	addNewItem: controlWrapper(addNewItem)
+	addNewItem: controlWrapper(addNewItem),
+	new_addTour: controlWrapper(new_addTour)
 }

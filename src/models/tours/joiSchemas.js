@@ -2,11 +2,6 @@ const Joi = require('joi')
 
 const addTourSchema = Joi.object({
 	name: Joi.string().required(),
-	users: Joi.array().items(
-		Joi.object({
-			id: Joi.string().required()
-		})
-	),
 	duration: Joi.number().required(),
 	listType: Joi.number().required()
 })
@@ -20,9 +15,9 @@ const updateEquipItem = Joi.object({
 })
 
 const addNewItem = Joi.object({
-	name: Joi.string().required(),
-	category: Joi.string().required(),
-	description: Joi.string().required()
+	name: Joi.string(),
+	category: Joi.string(),
+	description: Joi.string()
 })
 const Schema = {
 	addTourSchema,

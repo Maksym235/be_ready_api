@@ -5,10 +5,11 @@ const updateEquipItem = async (req, res) => {
 	const { _id: ownerId } = req.user
 	const { equipId } = req.body
 	const { id: tripId } = req.params
-	const tour = await ToursModel.findOne({ id: tripId })
+	const tour = await ToursModel.findOne({ _id: tripId })
 	if (!tour) {
 		throw new HttpError(404, 'trip not found')
 	}
+	console.log(tour)
 	const equipList = tour.equipList[0]
 	const equipitem = equipList.find((el) => String(el._id) === equipId)
 	const indexItem = equipList.findIndex((el) => el._id === equipitem._id)
