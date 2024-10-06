@@ -22,7 +22,7 @@ const new_addTour = async (req, res) => {
 		case 0:
 			const newEmptyList = {
 				tourId: createdTour._id,
-				list: []
+				list: {}
 			}
 			const createdEmptyList = await EquipsListModel.create(newEmptyList)
 			const newEmptyTrip = await ToursModel.findByIdAndUpdate(
@@ -39,7 +39,13 @@ const new_addTour = async (req, res) => {
 		case 1:
 			const newList = {
 				tourId: createdTour._id,
-				list: equip
+				list: equip.reduce((acc, item) => {
+					if (!acc[item.category]) {
+						acc[item.category] = []
+					}
+					acc[item.category].push(item)
+					return acc
+				}, {})
 			}
 			const createdList = await EquipsListModel.create(newList)
 			const newTrip = await ToursModel.findByIdAndUpdate(
