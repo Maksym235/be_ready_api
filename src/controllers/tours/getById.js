@@ -19,6 +19,7 @@ const getById = async (req, res) => {
 			users: resp.users,
 			owner: resp.owner,
 			duration: resp.duration,
+			equipListId: resp.equipList,
 			equipList: equipList.list
 		}
 	})
