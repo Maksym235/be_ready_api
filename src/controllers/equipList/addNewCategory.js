@@ -15,11 +15,11 @@ const addNewCategory = async (req, res) => {
 	} else {
 		newlist.set(name, [])
 	}
-	// await EquipsListModel.findByIdAndUpdate(
-	// 	{ _id: listid },
-	// 	{ list: newlist },
-	// 	{ new: true }
-	// )
+	await EquipsListModel.findByIdAndUpdate(
+		{ _id: listid },
+		{ list: newlist },
+		{ new: true }
+	)
 	res.json({
 		code: 200,
 		message: 'Category added successfully'
