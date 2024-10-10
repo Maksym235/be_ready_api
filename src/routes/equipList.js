@@ -6,11 +6,14 @@ const {
 	addDefaultList,
 	getList,
 	addNewCategory,
-	addNewItem
+	addNewItem,
+	updateList
 } = require('../controllers/equipList')
 router.get('/', authenticate, getList)
 
 router.post('/create', authenticate, createList)
+
+router.post('/:id/update', authenticate, updateList)
 
 router.post('/:id/addNewCategory', authenticate, addNewCategory)
 
