@@ -1,7 +1,7 @@
 const { UserModel } = require('../../models/users')
 const { HttpError } = require('../../helpers')
 const sendFriendRequest = async (req, res) => {
-	const { _id: currentUser, name } = req.user
+	const { _id: currentUser, name, avatarURL } = req.user
 	const { userid } = req.body
 	const user = await UserModel.findById({ _id: userid })
 	if (!user) {
@@ -22,7 +22,7 @@ const sendFriendRequest = async (req, res) => {
 	await UserModel.findByIdAndUpdate(
 		{ _id: userid },
 		{
-			$push: { friendsRequest: { id: currentUser, name } }
+			$push: { friendsRequest: { id: currentUser, name, avatar: avatarURL } }
 		}
 	)
 	res.setHeader('Access-Control-Allow-Credentials', true)

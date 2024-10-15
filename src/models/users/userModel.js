@@ -41,7 +41,8 @@ const users = new Schema(
 			type: [
 				{
 					id: String,
-					name: String
+					name: String,
+					avatar: String
 				}
 			],
 			default: []
