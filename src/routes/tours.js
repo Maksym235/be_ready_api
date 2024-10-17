@@ -10,7 +10,10 @@ const {
 	updateEquipItem,
 	getTripById,
 	addNewItem,
-	new_addTour
+	new_addTour,
+	renameTrip,
+	changeDuration,
+	deleteTrip
 } = require('../controllers/tours')
 
 router.get('/', authenticate, getAllTours)
@@ -53,4 +56,20 @@ router.patch(
 	validationBody(Schema.updateEquipItem),
 	updateEquipItem
 )
+
+router.post(
+	'/:id/rename',
+	authenticate,
+	validationBody(Schema.renameTrip),
+	renameTrip
+)
+
+router.post(
+	'/:id/changeDuration',
+	authenticate,
+	validationBody(Schema.changeDurationTrip),
+	changeDuration
+)
+
+router.delete('/:id/delete', authenticate, deleteTrip)
 module.exports = router

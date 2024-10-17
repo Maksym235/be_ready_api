@@ -14,6 +14,14 @@ const updateEquipItem = Joi.object({
 	equipId: Joi.string().required()
 })
 
+const renameTrip = Joi.object({
+	name: Joi.string().required()
+})
+
+const changeDurationTrip = Joi.object({
+	duration: Joi.number().required()
+})
+
 const addNewItem = Joi.object({
 	name: Joi.string(),
 	category: Joi.string(),
@@ -23,7 +31,9 @@ const Schema = {
 	addTourSchema,
 	addUserstoTourSchema,
 	updateEquipItem,
-	addNewItem
+	addNewItem,
+	renameTrip,
+	changeDurationTrip
 }
 
 module.exports = Schema

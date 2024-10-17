@@ -8,6 +8,9 @@ const getById = require('./getById')
 const new_addTour = require('./new_add')
 // const addNewUser = require('./addNewItem')
 const addNewItem = require('./addNewItem')
+const rename = require('./rename')
+const changeDuration = require('./changeDuration')
+const deleteTrip = require('./delete')
 module.exports = {
 	getAllTours: controlWrapper(getAll),
 	addTour: controlWrapper(addTour),
@@ -16,5 +19,8 @@ module.exports = {
 	updateEquipItem: controlWrapper(updateEquip),
 	getTripById: controlWrapper(getById),
 	addNewItem: controlWrapper(addNewItem),
-	new_addTour: controlWrapper(new_addTour)
+	new_addTour: controlWrapper(new_addTour),
+	renameTrip: controlWrapper(rename),
+	changeDuration: controlWrapper(changeDuration),
+	deleteTrip: controlWrapper(deleteTrip)
 }
