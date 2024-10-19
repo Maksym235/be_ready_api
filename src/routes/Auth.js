@@ -18,7 +18,8 @@ const {
 	editFriendRequest,
 	deleteFriend,
 	changeAvatar,
-	resetToDefaultAvatar
+	resetToDefaultAvatar,
+	getFriendsTripRequests
 } = require('../controllers/users')
 const { authenticate, validationBody, uploads } = require('../middlewares')
 const { Schema } = require('../models/users')
@@ -38,6 +39,8 @@ router.get('/editRequest/:id', authenticate, editRequests)
 router.get('/editFrRequest/:id', authenticate, editFriendRequest)
 
 router.post('/frreq', authenticate, sendFriendRequest)
+
+router.get('/friendsTripRequests/:id', authenticate, getFriendsTripRequests)
 
 router.get('/deleteFriend/:id', authenticate, deleteFriend)
 

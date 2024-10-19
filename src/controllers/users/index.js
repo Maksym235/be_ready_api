@@ -18,6 +18,7 @@ const editFriendRequest = require('./editFriendRequest')
 const deleteFriend = require('./deleteFriend')
 const changeAvatar = require('./changeAvatar')
 const resetToDefaultAvatar = require('./resetToDefaultAvatar')
+const getFriendsTripRequests = require('./getFriendsTripRequests')
 module.exports = {
 	register: controlWrapper(register),
 	login: controlWrapper(login),
@@ -37,5 +38,6 @@ module.exports = {
 	editFriendRequest: controlWrapper(editFriendRequest),
 	deleteFriend: controlWrapper(deleteFriend),
 	changeAvatar: controlWrapper(changeAvatar),
-	resetToDefaultAvatar: controlWrapper(resetToDefaultAvatar)
+	resetToDefaultAvatar: controlWrapper(resetToDefaultAvatar),
+	getFriendsTripRequests: controlWrapper(getFriendsTripRequests)
 }
