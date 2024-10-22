@@ -13,7 +13,8 @@ const {
 	new_addTour,
 	renameTrip,
 	changeDuration,
-	deleteTrip
+	deleteTrip,
+	getUsersInfo
 } = require('../controllers/tours')
 
 router.get('/', authenticate, getAllTours)
@@ -35,6 +36,8 @@ router.post(
 	validationBody(Schema.addUserstoTourSchema),
 	addUserstoTour
 )
+
+router.get('/:id/usersInfo', authenticate, getUsersInfo)
 
 router.post(
 	'/:id/addNewItem',

@@ -11,6 +11,7 @@ const addNewItem = require('./addNewItem')
 const rename = require('./rename')
 const changeDuration = require('./changeDuration')
 const deleteTrip = require('./delete')
+const getUsersInfo = require('./getUsersInfo')
 module.exports = {
 	getAllTours: controlWrapper(getAll),
 	addTour: controlWrapper(addTour),
@@ -22,5 +23,6 @@ module.exports = {
 	new_addTour: controlWrapper(new_addTour),
 	renameTrip: controlWrapper(rename),
 	changeDuration: controlWrapper(changeDuration),
-	deleteTrip: controlWrapper(deleteTrip)
+	deleteTrip: controlWrapper(deleteTrip),
+	getUsersInfo: controlWrapper(getUsersInfo)
 }
