@@ -5,6 +5,7 @@ const addUserstoTour = async (req, res) => {
 	const { _id: ownerId } = req.user
 	const { usersId } = req.body
 	const { id } = req.params
+	const { invite } = req.query
 	const trip = await ToursModel.findById({ _id: id })
 	// const isUserOwner = await ToursModel.find({ _id: id })
 	if (String(trip.owner) !== String(ownerId)) {
@@ -17,10 +18,21 @@ const addUserstoTour = async (req, res) => {
 	if (!user) {
 		throw HttpError(400, 'user not found')
 	}
-	await UserModel.findByIdAndUpdate(
-		{ _id: usersId },
-		{ $push: { tripsRequest: { id: id, name: trip.name } } }
-	)
+	if (JSON.parse(invite)) {
+		await UserModel.findByIdAndUpdate(
+			{ _id: usersId },
+			{ $push: { tripsRequest: { id: id, name: trip.name } } }
+		)
+	} else {
+		await UserModel.findByIdAndUpdate(
+			{ _id: usersId },
+			{ $pull: { tripsRequest: { id: id, name: trip.name } } }
+		)
+		res.json({
+			code: 200,
+			message: 'request canceled successfully'
+		})
+	}
 	// const resp = await ToursModel.findByIdAndUpdate(
 	// 	{ _id: id },
 	// 	{ $push: { users: usersId } },
