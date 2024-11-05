@@ -1,11 +1,15 @@
 const { UserModel } = require('../../models/users')
+const { ToursModel } = require('../../models/tours')
 const { HttpError } = require('../../helpers')
 
 const getFriendsTripRequests = async (req, res) => {
 	const { friends } = req.user
 	const { id: tripId } = req.params
-	const ids = friends.map((el) => el._id)
-	const friendsData = await UserModel.find({ _id: { $in: ids } })
+	const trip = await ToursModel.findById({ _id: tripId })
+	const filteredIds = friends.filter(
+		(el) => !trip.users.includes(String(el._id))
+	)
+	const friendsData = await UserModel.find({ _id: { $in: filteredIds } })
 	const isHasRequestFriends = friendsData.reduce((acc, item) => {
 		acc.push({
 			name: item.name,
