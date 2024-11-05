@@ -1,15 +1,26 @@
 const { UserModel } = require('../../models/users')
-const { HttpError } = require('../../helpers')
+const { HttpError, cloudinary } = require('../../helpers')
 const { JWT_SECRET } = process.env
 const jwt = require('jsonwebtoken')
 
 const googleAuth = async (req, res) => {
-	const { email } = req.body
+	const { email, avatarURL, avatarName } = req.body
 	const user = await UserModel.findOne({ email: email })
+	const defaultAvatarData = await cloudinary.api.resources_by_tag('default')
+	const cloudinaryURL = defaultAvatarData.resources[0].secure_url
 	console.log(user)
 	if (!user) {
 		const newUser = {
-			...req.body
+			...req.body,
+			avatarURL:
+				avatarURL.length > 0 && avatarURL !== null ? avatarURL : cloudinaryURL,
+			avatarName:
+				avatarURL.length > 0 && avatarURL !== null
+					? avatarName
+					: 'default_user',
+			tripsRequest: [],
+			friendsRequest: [],
+			friends: []
 		}
 		const respRegister = await UserModel.create(newUser)
 		const payload = {

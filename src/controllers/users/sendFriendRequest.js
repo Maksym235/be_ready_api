@@ -16,6 +16,9 @@ const sendFriendRequest = async (req, res) => {
 	if (index !== -1) {
 		throw HttpError(400, 'Request already sent')
 	}
+	if (String(userid) === String(currentUser)) {
+		throw HttpError(400, 'you can`t send to yourself request')
+	}
 	if (indexInFriends !== -1) {
 		throw HttpError(400, 'User is already in friends list')
 	}
