@@ -6,6 +6,7 @@ const addNewCategory = require('./addNewCategory')
 const addNewItem = require('./addNewItem')
 const updateList = require('./updateList')
 const deleteCategory = require('./deleteCategory')
+const deleteItem = require('./deleteItem')
 module.exports = {
 	createList: controlWrapper(createList),
 	addDefaultList: controlWrapper(addDefaultList),
@@ -13,5 +14,6 @@ module.exports = {
 	addNewCategory: controlWrapper(addNewCategory),
 	addNewItem: controlWrapper(addNewItem),
 	updateList: controlWrapper(updateList),
-	deleteCategory: controlWrapper(deleteCategory)
+	deleteCategory: controlWrapper(deleteCategory),
+	deleteItem: controlWrapper(deleteItem)
 }
