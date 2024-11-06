@@ -14,7 +14,7 @@ const deleteItem = async (req, res) => {
 	if (!newList.get(category)) {
 		throw HttpError(404, 'Category not found')
 	}
-	if (newList.get(category).find((el) => String(el._id) !== itemid)) {
+	if (!newList.get(category).find((el) => String(el._id) === String(itemid))) {
 		throw HttpError(400, 'Item already exist')
 	}
 	// console.log(newList.get(category))
