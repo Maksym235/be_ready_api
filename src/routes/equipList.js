@@ -9,7 +9,8 @@ const {
 	addNewItem,
 	updateList,
 	deleteCategory,
-	deleteItem
+	deleteItem,
+	getCategoryIcons
 } = require('../controllers/equipList')
 router.get('/', authenticate, getList)
 
@@ -26,5 +27,7 @@ router.post('/:id/addNewItem', authenticate, addNewItem)
 router.post('/:id/deleteItem', authenticate, deleteItem)
 
 router.post('/default', authenticate, addDefaultList)
+
+router.get('/getIcons', authenticate, getCategoryIcons)
 
 module.exports = router

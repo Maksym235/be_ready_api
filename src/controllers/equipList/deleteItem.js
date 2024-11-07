@@ -18,22 +18,21 @@ const deleteItem = async (req, res) => {
 		throw HttpError(400, 'Item already exist')
 	}
 	// console.log(newList.get(category))
-	const index = newList
-		.get(category)
-		.findIndex((item) => String(item._id) === String(itemid))
-	newList.set(category, [newList.get(category).slice(0, index)])
 
-	console.log(newList.get(category))
-	// console.log(index)
-	// await EquipsListModel.findByIdAndUpdate(
-	// 	{ _id: listid },
-	// 	{
-	// 		list: newList
-	// 	},
-	// 	{
-	// 		new: true
-	// 	}
-	// )
+	newList.set(
+		category,
+		newList.get(category).filter((c) => String(c._id) !== String(itemid))
+	)
+
+	await EquipsListModel.findByIdAndUpdate(
+		{ _id: listid },
+		{
+			list: newList
+		},
+		{
+			new: true
+		}
+	)
 
 	res.json({
 		code: 200,
