@@ -22,6 +22,7 @@ const new_addTour = async (req, res) => {
 		case 0:
 			const newEmptyList = {
 				tourId: createdTour._id,
+				categoriesIcons: [],
 				list: {}
 			}
 			const createdEmptyList = await EquipsListModel.create(newEmptyList)
@@ -39,6 +40,15 @@ const new_addTour = async (req, res) => {
 		case 1:
 			const newList = {
 				tourId: createdTour._id,
+				categoriesIcons: equip.reduce((acc, item) => {
+					if (!acc.find((el) => el.name === item.category)) {
+						acc.push({
+							name: item.category,
+							icon: 'https://be-ready-api.vercel.app/static/category_icons/tent-svgrepo-com.svg'
+						})
+					}
+					return acc
+				}, []),
 				list: equip.reduce((acc, item) => {
 					if (!acc[item.category]) {
 						acc[item.category] = []

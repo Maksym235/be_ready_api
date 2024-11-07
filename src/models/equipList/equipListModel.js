@@ -40,6 +40,12 @@ const new_equips_list = new Schema(
 			ref: 'tours',
 			required: true
 		},
+		categoriesIcons: [
+			{
+				name: String,
+				icon: String
+			}
+		],
 		list: {
 			type: Map,
 			of: [
