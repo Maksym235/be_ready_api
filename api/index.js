@@ -18,9 +18,7 @@ const sorsOpt = {
 }
 app.use(express.json())
 app.use(cors(sorsOpt))
-app.use(cors({ origin: 'https://be-ready-api.vercel.app' }))
-// app.use('/static', express.static(__dirname + 'public'))
-app.use(express.static('/public'))
+app.use('/static', express.static('public'))
 app.use('/start', startRouter)
 app.use('/auth', authRouter)
 app.use('/tours', toursRouter)
