@@ -16,7 +16,6 @@ const updateEquipItem = async (req, res) => {
 	const index = newCategory.findIndex(
 		(item) => String(item._id) === String(equipId)
 	)
-
 	if (!listItem.persons.find((el) => String(el._id) === String(userId))) {
 		listItem.persons.push({
 			_id: userId,
@@ -31,13 +30,11 @@ const updateEquipItem = async (req, res) => {
 				new: true
 			}
 		)
-		res.json({
+		return res.json({
 			code: 200,
 			message: 'Success updated'
 		})
 	}
-	console.log(updCount)
-	console.log(typeof JSON.parse(updCount))
 	if (JSON.parse(updCount)) {
 		const person = listItem.persons.find(
 			(el) => String(el._id) === String(userId)
@@ -60,7 +57,8 @@ const updateEquipItem = async (req, res) => {
 				new: true
 			}
 		)
-		res.json({
+
+		return res.json({
 			code: 200,
 			message: 'Success count updated'
 		})
