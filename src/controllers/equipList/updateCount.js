@@ -20,6 +20,7 @@ const updateCount = async (req, res) => {
 	)
 	const newPerson = {
 		_id: person._id,
+		name: person.name,
 		count: newCount
 	}
 	listItem.persons.splice(personIndex, 1, newPerson)
