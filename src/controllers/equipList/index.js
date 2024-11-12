@@ -9,6 +9,7 @@ const deleteCategory = require('./deleteCategory')
 const deleteItem = require('./deleteItem')
 const getCategoryIcons = require('./getCategoryIcons')
 const updateEquipItem = require('./updateEquipItem')
+const updateCount = require('./updateCount')
 module.exports = {
 	createList: controlWrapper(createList),
 	addDefaultList: controlWrapper(addDefaultList),
@@ -19,5 +20,6 @@ module.exports = {
 	deleteCategory: controlWrapper(deleteCategory),
 	deleteItem: controlWrapper(deleteItem),
 	getCategoryIcons: controlWrapper(getCategoryIcons),
-	updateEquipItem: controlWrapper(updateEquipItem)
+	updateEquipItem: controlWrapper(updateEquipItem),
+	updateCount: controlWrapper(updateCount)
 }

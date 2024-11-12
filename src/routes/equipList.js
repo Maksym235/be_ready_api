@@ -11,7 +11,8 @@ const {
 	deleteCategory,
 	deleteItem,
 	getCategoryIcons,
-	updateEquipItem
+	updateEquipItem,
+	updateCount
 } = require('../controllers/equipList')
 router.get('/', authenticate, getList)
 
@@ -28,6 +29,8 @@ router.post('/:id/addNewItem', authenticate, addNewItem)
 router.post('/:id/deleteItem', authenticate, deleteItem)
 
 router.post('/:id/updateItem', authenticate, updateEquipItem)
+
+router.post('/:id/updateCount', authenticate, updateCount)
 
 router.post('/default', authenticate, addDefaultList)
 
