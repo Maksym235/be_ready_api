@@ -3,7 +3,8 @@ const Joi = require('joi')
 const addTourSchema = Joi.object({
 	name: Joi.string().required(),
 	duration: Joi.number().required(),
-	listType: Joi.number().required()
+	listType: Joi.number().required(),
+	customData: Joi.string()
 })
 
 const addUserstoTourSchema = Joi.object({

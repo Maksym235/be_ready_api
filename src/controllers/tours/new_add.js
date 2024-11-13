@@ -4,7 +4,7 @@ const { EquipModel } = require('../../models/equip')
 const { EquipsListModel } = require('../../models/equipList')
 
 const new_addTour = async (req, res) => {
-	const { name, listType, duration } = req.body
+	const { name, listType, duration, customData } = req.body
 	const { _id: userId } = req.user
 	const users = [userId]
 	const equip = await EquipModel.find()
@@ -69,6 +69,31 @@ const new_addTour = async (req, res) => {
 				newTrip
 			})
 			break
+		case 2:
+			const newCustomList = {
+				tourId: createdTour._id,
+				categoriesIcons: equip.reduce((acc, item) => {
+					if (!acc.find((el) => el.name === item.category)) {
+						acc.push({
+							name: item.category,
+							icon: 'https://be-ready-api.vercel.app/static/category_icons/tent-svgrepo-com.svg'
+						})
+					}
+					return acc
+				}, []),
+				list: JSON.parse(customData)
+			}
+			const createdCustomList = await EquipsListModel.create(newCustomList)
+			const newCustomTrip = await ToursModel.findByIdAndUpdate(
+				{ _id: createdTour._id },
+				{
+					equipList: createdCustomList._id
+				},
+				{ new: true }
+			)
+			res.json({
+				newCustomTrip
+			})
 		default:
 			break
 	}
