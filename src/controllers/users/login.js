@@ -33,7 +33,7 @@ const login = async (req, res) => {
 		id: user.id
 	}
 
-	const token = jwt.sign(payload, JWT_SECRET, { expiresIn: '24h' })
+	const token = jwt.sign(payload, JWT_SECRET, { expiresIn: '7d' })
 	const resp = await UserModel.findByIdAndUpdate(
 		user.id,
 		{ token },
